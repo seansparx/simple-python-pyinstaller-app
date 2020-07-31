@@ -1,9 +1,16 @@
 pipeline {
-    stages {        
-        stage('Build') {            
-            steps {
-                sh 'docker run hello-world'
+    agent none        
+    stages {
+        agent {
+            docker {
+                image 'hello-world'
             }
-        }        
+        }
+        stage('Build') {
+            steps {
+                sh 'echo $PATH'
+            }
+        }
+        
     }
 }
