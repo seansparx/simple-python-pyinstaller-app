@@ -1,12 +1,12 @@
 pipeline {
-    agent none
+    agent {
+        docker {
+            image 'hello-world'
+        }
+    }
     stages {
-        stage('Build') {
-            agent {
-                docker {
-                    image 'hello-world'
-                }
-            }
+        
+        stage('Build') {            
             steps {
                 sh 'pwd'
             }
